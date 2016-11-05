@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 15:01:03 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/05 16:07:14 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/05 17:11:08 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 		cpy[i] = source[i];
 		i++;
 	}
+	cpy[i] = '\0';
 	return (NULL);
 }

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 14:59:53 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/05 18:14:18 by gphilips         ###   ########.fr       */
+/*   Created: 2016/11/05 19:23:00 by gphilips          #+#    #+#             */
+/*   Updated: 2016/11/05 19:26:01 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*cpy;
-	char	*source;
+	unsigned char *str1;
+	unsigned char *str2;
 	size_t	i;
 
-	cpy = (char*) dest;
-	source = (char*) src;
+	str1 = (unsigned char*) s1;
+	str2 = (unsigned char*) s2;
 	i = 0;
-	if (dest == NULL || src == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		cpy[i] = source[i];
+	while (str1[i] && str1[i] == str2[i] && i < n)
 		i++;
-	}
-	cpy[i] = '\0';
-	return (dest);
+	return (str1[i] - str2[i]);
 }
