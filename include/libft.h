@@ -31,10 +31,9 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 
 
-
-
-
-
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
+char	*ft_strstr(const char *s1, const char *s2);
 
 
 int		ft_strcmp(const char *s1, const char *s2);
@@ -47,4 +46,5 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+
 #endif
