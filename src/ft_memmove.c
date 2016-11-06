@@ -14,22 +14,9 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*cpy;
-	unsigned char	*source;
-	unsigned char	*tmp;
-	size_t			i;
+	void	*tmp[n];
 
-	cpy = (unsigned char*) dest;
-	source = (unsigned char*) src;
-	i = 0;
-	if (dest == NULL || src == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		tmp[i] = source[i];
-		cpy[i] = tmp[i];
-		i++;
-	}
-	cpy[i] = '\0';
+	memcpy(tmp, src, n);
+	memcpy(dest, tmp, n);
 	return (dest);
 }
