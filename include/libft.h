@@ -63,7 +63,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 
 
 
-
+char	*ft_itoa(int n);
 void	ft_putchar(char c);
 void	ft_putstr(const char *s);
 void	ft_putendl(char const *s);
