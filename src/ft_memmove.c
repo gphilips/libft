@@ -14,9 +14,13 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*tmp[n];
+	void	*tmp;
 
+	tmp = (void*)malloc(sizeof(void*) * n);
+	if (!tmp)
+		return (NULL);
 	memcpy(tmp, src, n);
 	memcpy(dest, tmp, n);
+	free(tmp);
 	return (dest);
 }

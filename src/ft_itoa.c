@@ -8,8 +8,11 @@ static int ft_get_len(int n)
 	if (n == 0)
 		return (1);
 	if (n < 0)
+	{
 		i = 1;
-	while (n)
+		n = -n;
+	}
+	while (n != 0)
 	{
 		n /= 10;
 		i++;
@@ -35,7 +38,7 @@ char	*ft_itoa(int n)
 		n = -n;
 		dest[0] = '-';	
 	}
-	while (n)
+	while (n > 0)
 	{
 		dest[len - 1] = (n % 10) + '0';
 		n /= 10;

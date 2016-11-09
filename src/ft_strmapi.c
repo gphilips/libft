@@ -13,11 +13,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	dest = ft_strnew(len);
 	if (dest == NULL)
 		return (NULL);
-	while (dest[i] && f && s)
+	while (f && s[i])
 	{
 		dest[i] = f(i, s[i]);
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }
