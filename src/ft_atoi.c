@@ -30,6 +30,8 @@ int		ft_atoi(const char *nptr)
 	{
 		if (str[i] == '-')
 			negative = 1;
+		if ((str[0] == '-' && str[1] == '+') || (str[0] == '+' && str[1] == '-'))
+			return (0);
 		i++;
 	}
 	while (str[i] >= 48 && str[i] <= 57)
