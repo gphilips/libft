@@ -2,9 +2,9 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	if (*alst)
+	if (*alst && del)
 	{
-		ft_memdel((void**)alst);	
+		ft_lstdel(&(*alst)->next, del);	
 		ft_lstdelone(alst, del);
 	}
 }
