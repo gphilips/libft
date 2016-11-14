@@ -20,10 +20,9 @@ void	*ft_memalloc(size_t size)
 	i = 0;
 	if (size == 0)
 		return (NULL);
-	tmp = NULL;
 	tmp = (void*)malloc(sizeof(*tmp) * size);
 	if (tmp == NULL)
 		return (NULL);
-	ft_bzero(tmp, size);
+	ft_memset(tmp, 0, size);
 	return (tmp);
 }

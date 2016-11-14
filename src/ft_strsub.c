@@ -6,42 +6,26 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:42:45 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 17:47:56 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/14 15:08:50 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
-
-char			*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-		unsigned int	i;
-		unsigned int	k;
-		unsigned int	tmp;
-		char			*sub;
+	char	*str;
+	size_t	i;
 
-		i = 0;
-		if (s)
-		{
-			sub = ft_strnew(len);
-			if (!sub)
-				return (NULL);
-			while (s[i])
-			{
-				if (i == start)
-				{
-					tmp = i;
-					k = 0;
-					while (i < (unsigned int)len)
-					{
-						sub[k] = s[i];
-						i++;
-						k++;
-					}
-					sub[k] = '\0';
-					return (sub);
-				}
-				i++;
-			}
-		}
+	if (!s)
 		return (NULL);
+	str = ft_strnew(len);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[start] && i < len)
+	{
+		str[i] = s[start];
+		i++;
+		start++;
+	}
+	return (str);
 }

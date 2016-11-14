@@ -25,7 +25,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	dest = ft_strnew(len);
 	if (dest == NULL)
 		return (NULL);
-	while (dest[i] && f && s)
+	while (f && s[i])
 	{
 		dest[i] = f(s[i]);
 		i++;

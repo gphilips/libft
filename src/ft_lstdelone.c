@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 15:48:49 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 15:48:50 by gphilips         ###   ########.fr       */
+/*   Created: 2016/11/14 15:02:28 by gphilips          #+#    #+#             */
+/*   Updated: 2016/11/14 15:02:59 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_putendl_fd(const char *s, int fd)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	if (s)
+	if (*alst)
 	{
-		ft_putstr_fd(s, fd);
-		ft_putchar_fd('\n', fd);
+		del((*alst)->content, (*alst)->content_size);
+		ft_memdel((void**)alst);
 	}
 }

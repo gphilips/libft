@@ -6,34 +6,34 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 20:19:31 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 16:13:54 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/14 14:59:41 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-int		ft_atoi(const char *nptr)
+int		ft_atoi(const char *s)
 {
-	const char	*str;
 	size_t		result;
 	size_t		negative;
 	size_t		i;
 
-	str = nptr;
 	result = 0;
 	negative = 0;
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == ' '
-			|| str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
+	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' '
+			|| s[i] == '\f' || s[i] == '\r' || s[i] == '\v')
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	while (s[i] == '+' || s[i] == '-')
 	{
-		negative = (str[i] == '-') ? 1 : 0;
+		negative = (s[i] == '-') ? 1 : 0;
+		if ((s[0] == '-' && s[1] == '+') || (s[0] == '+' && s[1] == '-'))
+			return (0);
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	while (s[i] >= 48 && s[i] <= 57)
 	{
-		result = result * 10 + str[i] - '0';
+		result = result * 10 + s[i] - '0';
 		i++;
 	}
 	result = (negative == 1) ? -result : result;

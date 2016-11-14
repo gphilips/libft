@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 15:56:56 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 15:57:28 by gphilips         ###   ########.fr       */
+/*   Created: 2016/11/14 15:00:21 by gphilips          #+#    #+#             */
+/*   Updated: 2016/11/14 15:05:25 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strtrim(char const *s)
 {
-	size_t	len;
-	size_t	i;
+	size_t			len;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
+	char			*tmp;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	i = 0;
-	while (i <= len)
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i++;
+	j = len - 1;
+	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+		j--;
+	if (i == len)
+		return (ft_strnew(0));
+	if (!(tmp = (char*)malloc(sizeof(char) * (i - j + 1))))
+		return (NULL);
+	k = 0;
+	while (i <= j)
 	{
-		if (s[i] == (char)c)
-			return ((char*)s + i);
+		tmp[k] = s[i];
+		k++;
 		i++;
 	}
-	return (NULL);
+	tmp[k] = '\0';
+	return (tmp);
 }
