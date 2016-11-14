@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 17:02:29 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 19:00:30 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/14 15:59:36 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*tmp;
+	void	*tmp[n];
 
-	tmp = ft_memalloc(n);
 	ft_memcpy(tmp, src, n);
 	ft_memcpy(dest, tmp, n);
-	free(tmp);
 	return (dest);
 }

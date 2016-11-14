@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:00:39 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/14 15:00:42 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/14 17:02:29 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_wordlen(char const *s, char c)
 	return (i);
 }
 
-static size_t	ft_count_word(char const *s, char c)
+static size_t		ft_count_word(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -45,26 +45,33 @@ static size_t	ft_count_word(char const *s, char c)
 	return (count);
 }
 
-static char		*ft_get_word(char const *s, char c)
+static unsigned int		ft_start_word(char const *s, char c)
 {
-	size_t	wordlen;
 	size_t	i;
-	char	*tab;
 
-	wordlen = ft_wordlen((char*)s, c);
-	tab = (char*)malloc(sizeof(char) * wordlen + 1);
-	if (!tab)
-		return (NULL);
 	i = 0;
-	while (i < wordlen)
+	while (s[i])
 	{
-		tab[i] = s[i];
+		if (s[i] != c)
+			return (i);
 		i++;
 	}
+	return (0);
+}
+
+static char				*ft_get_word(char const *s, char c)
+{
+	size_t			wordlen;
+	unsigned int	start;
+	char			*tab;
+
+	wordlen = ft_wordlen(s, c);
+	start = ft_start_word(s, c);
+	tab = ft_strsub(s, start, wordlen);
 	return (tab);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char					**ft_strsplit(char const *s, char c)
 {
 	size_t	i;
 	size_t	nb_word;
@@ -73,14 +80,15 @@ char			**ft_strsplit(char const *s, char c)
 	if (!s || !c)
 		return (NULL);
 	nb_word = ft_count_word(s, c);
-	tab = (char**)malloc(sizeof(char*) * nb_word);
+	tab = (char**)malloc(sizeof(char*) * nb_word + 1);
 	if (!tab)
 		return (NULL);
 	i = 0;
-	while (i < nb_word)
+	while (i <= nb_word)
 	{
 		tab[i] = ft_get_word(s, c);
 		i++;
 	}
+	tab[i] = NULL;
 	return (tab);
 }
