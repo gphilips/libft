@@ -33,30 +33,41 @@ static size_t	ft_count_word(char const *s, char c)
 	return (count);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static char		*ft_get_word(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	nb_word;
 	size_t	wordlen;
-	char	**tab;
+	size_t	i;
+	char	*tab;
 
-	nb_word = ft_count_word(s, c);
 	wordlen = ft_wordlen((char*)s, c);
-	tab = (char**)malloc(sizeof(char*) * nb_word + 1);
+	tab = (char*)malloc(sizeof(char) * wordlen + 1);
 	if (!tab)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (s[i] && i < nb_word)
+	while (i < wordlen)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		tab[j] = ft_strsub(s, i, wordlen);
-		if (!tab[j])
-			return (NULL);
-		s = s + wordlen;
-		j++;
+		tab[i] = s[i];
+		i++;
+	}
+	return (tab);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	size_t	i;
+	size_t	nb_word;
+	char	**tab;
+
+	if (!s || !c)
+		return (NULL);
+	nb_word = ft_count_word(s, c);
+	tab = (char**)malloc(sizeof(char*) * nb_word);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < nb_word)
+	{
+		tab[i] = ft_get_word(s, c);
 		i++;
 	}
 	return (tab);
