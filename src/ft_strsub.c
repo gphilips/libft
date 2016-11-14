@@ -1,26 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 15:51:22 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 15:51:23 by gphilips         ###   ########.fr       */
+/*   Created: 2016/11/08 17:42:45 by gphilips          #+#    #+#             */
+/*   Updated: 2016/11/08 17:47:56 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-char	*ft_strnew(size_t size)
+char			*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+		unsigned int	i;
+		unsigned int	k;
+		unsigned int	tmp;
+		char			*sub;
 
-	if (size < 1)
+		i = 0;
+		if (s)
+		{
+			sub = ft_strnew(len);
+			if (!sub)
+				return (NULL);
+			while (s[i])
+			{
+				if (i == start)
+				{
+					tmp = i;
+					k = 0;
+					while (i < (unsigned int)len)
+					{
+						sub[k] = s[i];
+						i++;
+						k++;
+					}
+					sub[k] = '\0';
+					return (sub);
+				}
+				i++;
+			}
+		}
 		return (NULL);
-	str = ft_memalloc(size + 1);
-	if (str == NULL)
-		return (NULL);
-	ft_bzero(str, size);
-	return (str);
 }

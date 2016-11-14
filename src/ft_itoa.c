@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 15:47:17 by gphilips          #+#    #+#             */
+/*   Updated: 2016/11/08 16:27:29 by gphilips         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/libft.h"
 
-static int ft_get_len(int n)
+static int	ft_get_len(int n)
 {
 	size_t	i;
 
@@ -17,7 +29,7 @@ static int ft_get_len(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char			*dest;
 	size_t			len;
@@ -33,7 +45,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		n = -n;
-		dest[0] = '-';	
+		dest[0] = '-';
 	}
 	while (n)
 	{
