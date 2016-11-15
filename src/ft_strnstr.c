@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 			i = tmp;
 		}
 		if (s2[k] == '\0')
-			return ((char*)&s1[i]);
+			return ((char*)(s1 + i));
 		i++;
 	}
 	return (NULL);

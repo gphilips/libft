@@ -12,30 +12,39 @@
 
 #include "../include/libft.h"
 
-int		ft_atoi(const char *s)
+static int	ft_conv(char const *s, int i, int sign)
 {
-	size_t		result;
-	size_t		negative;
-	size_t		i;
-
+	int		result;
+	
 	result = 0;
-	negative = 0;
-	i = 0;
-	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' '
-			|| s[i] == '\f' || s[i] == '\r' || s[i] == '\v')
-		i++;
-	while (s[i] == '+' || s[i] == '-')
-	{
-		negative = (s[i] == '-') ? 1 : 0;
-		if ((s[0] == '-' && s[1] == '+') || (s[0] == '+' && s[1] == '-'))
-			return (0);
-		i++;
-	}
 	while (s[i] >= 48 && s[i] <= 57)
 	{
 		result = result * 10 + s[i] - '0';
 		i++;
 	}
-	result = (negative == 1) ? -result : result;
+	result = (sign < 0) ? -result : result;
 	return (result);
+}
+
+int			ft_atoi(char const *s)
+{
+	int		sign;
+	int		i;
+	int		conv;
+
+	sign = 0;
+	i = 0;
+	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' '
+			|| s[i] == '\f' || s[i] == '\r' || s[i] == '\v')
+		i++;
+	while(s[i] == '+' || s[i] == '-')
+	{
+		if (s[i] == '+')
+			sign++;
+		else if (s[i] == '-')
+			sign--;
+		i++;
+	}
+	conv = ft_conv(s, i, sign);
+	return (conv);
 }
