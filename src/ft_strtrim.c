@@ -12,55 +12,53 @@
 
 #include "../include/libft.h"
 
-static unsigned int		ft_trim_start(char const *s)
+static int	ft_fullblank(char const *s)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	return (i);
-}
-
-static unsigned int		ft_trim_end(char const *s)
-{
-	unsigned int	i;
-	size_t			len;
+	size_t	len;
+	int		i;
 
 	len = ft_strlen(s);
-	i = len - 1;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i--;
-	return (i);
+	i = 0;
+	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+	{
+		i++;
+		len--;
+	}
+	if (len == 0)
+		return (1);
+	else
+		return (0);
 }
 
-char	*ft_strtrim(char const *s)
+char		*ft_strtrim(char const *s)
 {
-	size_t			len;
 	unsigned int	start;
 	unsigned int	end;
 	unsigned int	i;
-	char			*tmp;
+	char			*tab;
+	size_t			wordlen;
 
+	start = 0;
+	end = 0;
 	if (!s)
 		return (NULL);
-	len = ft_strlen(s);
-	start = ft_trim_start(s);
-	end = ft_trim_end(s);
-	if (start == len || end == start)
-		return (ft_strnew(1));
-	else 
+	if (ft_fullblank(s) == 1)
+		return (ft_strdup(""));
+	i = 0;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 	{
-		if (!(tmp = (char*)malloc(sizeof(char) * ((end - start + 1) + 1))))
-			return (NULL);
-		i = 0;
-		while (start <= end)
-		{
-			tmp[i] = s[start];
-			i++;
-			start++;
-		}
-		tmp[i] = '\0';
+		start++;
+		i++;
 	}
-	return (tmp);
+	while (s[i])
+		i++;
+	i--;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+	{
+		end++;
+		i--;
+	}
+	wordlen = ft_strlen(s) - start - end;
+	tab = ft_strsub(s, start, wordlen);
+	return (tab);
 }
