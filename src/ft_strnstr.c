@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:51:12 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 15:51:13 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/17 19:00:47 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,17 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	k;
-	size_t	tmp;
+	size_t	len;
 
-	i = 0;
-	k = 0;
-	if (s2[i] == '\0' || !s2)
+	len = ft_strlen(s2);
+	if (*s2 == '\0')
 		return ((char*)s1);
-	while (s1[i] && i < n)
+	while (*s1 && n >= len)
 	{
-		if (s1[i] == s2[k])
-		{
-			tmp = i;
-			while (s2[k] && s1[i + k] == s2[k])
-				k++;
-			i = tmp;
-		}
-		if (s2[k] == '\0')
-			return ((char*)(s1 + i));
-		i++;
+		if (*s1 == *s2 && ft_memcmp(s1, s2, len) == 0)
+			return ((char*)s1);
+		s1++;
+		n--;
 	}
 	return (NULL);
 }
