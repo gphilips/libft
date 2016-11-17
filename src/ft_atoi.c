@@ -12,7 +12,7 @@
 
 #include "../include/libft.h"
 
-static int	ft_conv(char const *s, int i, int sign)
+static int	ft_conv(char const *s, int i, int negative)
 {
 	int		result;
 	
@@ -22,29 +22,30 @@ static int	ft_conv(char const *s, int i, int sign)
 		result = result * 10 + s[i] - '0';
 		i++;
 	}
-	result = (sign < 0) ? -result : result;
+	result = (negative == 1) ? -result : result;
 	return (result);
 }
 
 int			ft_atoi(char const *s)
 {
-	int		sign;
+	int		negative;
 	int		i;
 	int		conv;
 
-	sign = 0;
+	negative = 0;
 	i = 0;
 	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' '
 			|| s[i] == '\f' || s[i] == '\r' || s[i] == '\v')
 		i++;
-	while(s[i] == '+' || s[i] == '-')
+	while (s[i] == '+' || s[i] == '-')
 	{
-		if (s[i] == '+')
-			sign++;
-		else if (s[i] == '-')
-			sign--;
+		if (s[i] == '-')
+			negative = 1;
+		if ((s[i] == '+' && s[i + 1] == '-')
+			|| (s[i + 1] == '-' && s[i + 1] == '+'))
+			return (0);
 		i++;
 	}
-	conv = ft_conv(s, i, sign);
+	conv = ft_conv(s, i, negative);
 	return (conv);
 }
