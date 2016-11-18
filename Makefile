@@ -6,7 +6,7 @@
 #    By: gphilips <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 15:43:34 by gphilips          #+#    #+#              #
-#    Updated: 2016/11/14 15:16:09 by gphilips         ###   ########.fr        #
+#    Updated: 2016/11/18 15:53:41 by gphilips         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,7 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 		ft_strsplit.c
 
-SRCDIR = src/
-
-SRCS = $(addprefix $(SRCDIR), $(FILES))
-
-HEADER = include/libft.h
+HEADER = libft.h
 
 OBJ = $(FILES:.c=.o)
 
@@ -39,7 +35,7 @@ FLAGS = -Wall -Werror -Wextra
 all : $(NAME)
 
 $(NAME) :
-	gcc $(FLAGS) -c $(HEADER) $(SRCS)
+	gcc $(FLAGS) -c $(HEADER) $(FILES)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
