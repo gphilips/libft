@@ -6,7 +6,7 @@
 #    By: gphilips <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 15:43:34 by gphilips          #+#    #+#              #
-#    Updated: 2016/11/18 15:53:41 by gphilips         ###   ########.fr        #
+#    Updated: 2016/11/18 21:09:51 by gphilips         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_striteri.c ft_strmap.c ft_strequ.c ft_strnequ.c ft_strmapi.c \
 		ft_itoa.c ft_strjoin.c ft_strsub.c ft_strtrim.c ft_lstnew.c \
 		ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
-		ft_strsplit.c
+		ft_strsplit.c ft_lstadd_back.c ft_isupper.c ft_islower.c ft_max.c \
+		ft_swap.c
 
 HEADER = libft.h
 
