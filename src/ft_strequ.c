@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:49:09 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 15:49:11 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/17 20:51:10 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strequ(char const *s1, char const *s2)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
 	if (!s1 || !s2)

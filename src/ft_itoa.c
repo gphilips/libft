@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:47:17 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/08 16:27:29 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/17 15:21:15 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static size_t	ft_get_len(int n)
 	if (n == 0)
 		return (1);
 	if (n < 0)
-	{
-		i = 1;
-		n = -n;
-	}
+		i += 1;
 	while (n != 0)
 	{
 		n /= 10;
@@ -32,15 +29,14 @@ static size_t	ft_get_len(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char			*dest;
 	size_t			len;
 	size_t			i;
 
 	len = ft_get_len(n);
-	dest = ft_strnew(len);
-	if (!dest)
+	if (!(dest = ft_strnew(len)))
 		return (NULL);
 	if (n == 0)
 		return (ft_strcpy(dest, "0"));
@@ -50,7 +46,6 @@ char		*ft_itoa(int n)
 	if (n < 0)
 	{
 		dest[i] = '-';
-		i++;
 		n = -n;
 	}
 	while (n > 0)

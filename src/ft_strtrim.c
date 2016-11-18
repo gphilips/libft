@@ -6,13 +6,13 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:00:21 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/14 19:12:40 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/17 14:55:09 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-static int	ft_fullblank(char const *s)
+static int			ft_fullblank(char const *s)
 {
 	size_t	len;
 	int		i;
@@ -24,32 +24,34 @@ static int	ft_fullblank(char const *s)
 		i++;
 		len--;
 	}
-	if (len == 0)
+	if (len == 0 || i + 1 == '\0')
 		return (1);
 	else
 		return (0);
 }
 
-char		*ft_strtrim(char const *s)
+unsigned int		ft_start_word(char const *s)
 {
-	unsigned int	start;
-	unsigned int	end;
 	unsigned int	i;
-	char			*tab;
-	size_t			wordlen;
+	unsigned int	start;
 
-	start = 0;
-	end = 0;
-	if (!s)
-		return (NULL);
-	if (ft_fullblank(s) == 1)
-		return (ft_strdup(""));
 	i = 0;
+	start = 0;
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 	{
 		start++;
 		i++;
 	}
+	return (start);
+}
+
+unsigned int		ft_end_word(char const *s)
+{
+	unsigned int	end;
+	unsigned int	i;
+
+	end = 0;
+	i = 0;
 	while (s[i])
 		i++;
 	i--;
@@ -58,6 +60,24 @@ char		*ft_strtrim(char const *s)
 		end++;
 		i--;
 	}
+	return (end);
+}
+
+char				*ft_strtrim(char const *s)
+{
+	unsigned int	start;
+	unsigned int	end;
+	unsigned int	i;
+	char			*tab;
+	size_t			wordlen;
+
+	if (!s)
+		return (NULL);
+	if (ft_fullblank(s) == 1)
+		return (ft_strdup(""));
+	i = 0;
+	start = ft_start_word(s);
+	end = ft_end_word(s);
 	wordlen = ft_strlen(s) - start - end;
 	tab = ft_strsub(s, start, wordlen);
 	return (tab);

@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:00:39 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/14 17:02:29 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/17 15:01:55 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static	char	*ft_get_word(const char *s, char c, int *i)
 	j = 0;
 	while (s[*i] != c && s[*i])
 	{
-			tab[j] = s[*i];
-			j++;
-			*i += 1;
+		tab[j] = s[*i];
+		j++;
+		*i += 1;
 	}
 	tab[j] = '\0';
 	while (s[*i] == c && s[*i])
-			*i += 1;
+		*i += 1;
 	return (tab);
 }
 
@@ -76,4 +76,3 @@ char			**ft_strsplit(const char *s, char c)
 	tab[j] = NULL;
 	return (tab);
 }
-
