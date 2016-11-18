@@ -12,32 +12,24 @@
 
 #include "../include/libft.h"
 
-static size_t	ft_lstlen(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t	count;
+	t_list	*new_lst;
+	t_list	*new_elem;
+	t_list	*prev_elem;
 
-	count = 0;
+	if (!lst)
+		return (NULL);	
+	new_lst = f(lst);
+	prev_elem = new_lst;
+	lst = lst->next;
 	while (lst)
 	{
-		count++;
+		new_elem = (*f)(lst);
+		prev_elem->next = new_elem;
+		prev_elem = new_elem;
 		lst = lst->next;
 	}
-	return (count);
-}
-
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list	*new;
-	size_t	len;
-
-	len = ft_lstlen(lst);
-	if (!(new = (t_list*)malloc(sizeof(t_list) * len)))
-		return (NULL);
-	while (lst && new && f)
-	{
-		new = ft_lstnew(lst->content, lst->content_size);
-		new = new->next;
-		lst = lst->next;
-	}
-	return (new);
+	prev_elem->next = NULL;
+	return (new_lst);
 }
