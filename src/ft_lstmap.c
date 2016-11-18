@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:03:14 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/14 15:08:11 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/18 15:06:54 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list	*prev_elem;
 
 	if (!lst)
-		return (NULL);	
+		return (NULL);
 	new_lst = f(lst);
 	prev_elem = new_lst;
 	lst = lst->next;
