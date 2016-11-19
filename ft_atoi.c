@@ -6,11 +6,12 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 20:19:31 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/18 15:53:57 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/19 15:20:54 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 int			ft_atoi(char const *s)
 {

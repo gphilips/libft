@@ -6,7 +6,7 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 14:57:52 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/18 21:09:14 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/19 15:30:23 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define LIBFT_H
 
 # include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -84,6 +82,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstadd_back(t_list *list, t_list *new);
 int					ft_isupper(int c);
 int					ft_islower(int c);
-void				ft_swap(void *a, void *b);
+void				ft_swap(int *a, int *b);
 int					ft_max(int *tab, unsigned int len);
 #endif

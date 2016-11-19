@@ -6,11 +6,12 @@
 /*   By: gphilips <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:00:21 by gphilips          #+#    #+#             */
-/*   Updated: 2016/11/18 16:05:49 by gphilips         ###   ########.fr       */
+/*   Updated: 2016/11/19 15:25:35 by gphilips         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static int			ft_fullblank(char const *s)
 {
